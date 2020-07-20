@@ -2,7 +2,9 @@ import logging
 import os
 import datetime
 
-BASE_PATH='/Users/wangxy/Documents/ModelCom/savedata'
+BASE_PATH = '/Volumes/Fast SSD/ModelCom/savedata'
+
+
 class baseAction():
     """
     basic action
@@ -49,6 +51,7 @@ class baseAction():
         date = datetime.datetime.now()
         strdate = date.strftime("%Y%m%d")
         return strdate
+
     def getTime(self):
         date = datetime.datetime.now()
         strdate = date.strftime("%H_%M_%S")

@@ -87,7 +87,7 @@ class baseOptimize(baseAction):
         eq = np.array(eq).reshape(5, 1)
         d = [0.025, 0.015, 0.055, 0.026]
         d =np.array(d).reshape(4,1)
-        value = np.linspace(0,0.02,500)
+        value = np.linspace(0,0.2,500)
         ret=[]
         for a in value:
             alist =[a]*4
@@ -105,7 +105,7 @@ class baseOptimize(baseAction):
 if __name__ == '__main__':
     obj = baseOptimize()
     ret = obj.example_double_opt()
-    value = np.linspace(0, 0.02, 500)
+    value = np.linspace(0, 0.2, 500)
     graph = baseGraph()
     graph.scatter([value],[ret])
     # lst=[0,1,2,3,4]

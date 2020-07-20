@@ -216,7 +216,18 @@ class baseGraph(baseAction):
         plt.show()
 
     def contr(self, x, y, z, xlabel="inputx", ylabel="inputY", title="input title"):
+        """
+        等高线，列优先
+        :param x:
+        :param y:
+        :param z:
+        :param xlabel:
+        :param ylabel:
+        :param title:
+        :return:
+        """
         contrs = plt.contour(x, y, z)
+
         plt.clabel(contrs)
         plt.xlabel(xlabel)
         plt.ylabel(ylabel)
