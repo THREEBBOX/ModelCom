@@ -1,3 +1,7 @@
+"""
+线性，非线性优化，微分方程求解
+"""
+
 from BasicAction import *
 import scipy as sp
 from scipy import optimize
