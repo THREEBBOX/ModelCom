@@ -4,6 +4,7 @@ import numpy as np
 from scipy import stats
 from statsmodels.stats import weightstats
 from scipy import interpolate
+import matplotlib.pyplot as plt
 
 
 # pdf概率密度
@@ -160,34 +161,36 @@ class basePro(baseAction):
         x = np.array([6, 2, 6, 7, 4, 2, 5, 9])
         y = np.array([4, 9, 5, 3, 8, 5, 8, 2])
         z = np.array([5, 2, 1, 9, 7, 4, 3, 3])
-        xy0=np.vstack((x,y))
+        xy0 = np.vstack((x, y))
         print(xy0.shape)
-        def pfunc(t,a,b,c):
-            return a*np.exp(b*t[0])+c*t[1]**2
+
+        def pfunc(t, a, b, c):
+            return a * np.exp(b * t[0]) + c * t[1] ** 2
+
         from scipy.optimize import curve_fit
-        popt,pcov = curve_fit(pfunc,xy0,z)
+        popt, pcov = curve_fit(pfunc, xy0, z)
         print(popt)
         return popt
 
+    def relative_matrix(self, data, title='relative matrix'):
+        self.info("相关系数矩阵和热力图计算")
+        cor_matrix = np.corrcoef(data.T)
+        import seaborn as sns
+        sns.heatmap(cor_matrix, cmap='Blues', annot=True)
+        plt.show()
+        self.info("相关系数矩阵\n" + str(cor_matrix))
+        zscore = stats.zscore(data)  # mean_std归一化
+        r = np.corrcoef(zscore.T)  # 归一化之后的相关矩阵
+        self.info("相关系数矩阵（归一化）\n" + str(r))
+        d, e = np.linalg.eig(r)  # 特征值和特征向量
+        rate = d / d.sum()
+        rate = np.round(rate, 4)
+        self.info("贡献率为：\n" + str(rate))
 
 
 if __name__ == '__main__':
-    data = np.loadtxt('/Volumes/Fast SSD/ModelCom/data/Pdata7_5.txt')
-    print(data.shape)
-    data = data[::-1]
-    print(data.shape)
-    x = np.arange(0, 1300, 100)
-    print(x.shape)
-    y = np.arange(0, 1500, 100)
-    print(y.shape)
-    f = interpolate.interp2d(y, x, data)
-    xn = np.linspace(0, 1200, 121)
-    yn = np.linspace(0, 1400, 141)
-    zn = f(yn, xn)
+    a = np.loadtxt('../data/Pdata11_8.txt')
 
-    graph = baseGraph()
-    print("=====")
-    print(zn.shape)
-    print(xn.shape)
-    print(yn.shape)
-    graph.contr(yn, xn, zn)
+    obj = basePro()
+
+    obj.relative_matrix(a)

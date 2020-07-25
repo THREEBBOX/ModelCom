@@ -64,10 +64,12 @@ def fangxiangweifen():
 
 
 if __name__ == '__main__':
-    fileObj = baseFile()
-    graphObj = baseGraph()
-    prObj = basePro()
-    data = [0.497, 0.506, 0.518, 0.524, 0.498, 0.511, 0.520, 0.515, 0.512]
-    data= np.array(data)
-    prObj.ZtestCal(data,0.5,sigma=0.015)
-    p
+    a = np.array(
+        [
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9]
+        ]
+    )
+    print(a.sum(axis=1,keepdims=True))
+
