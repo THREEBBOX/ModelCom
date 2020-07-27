@@ -64,12 +64,6 @@ def fangxiangweifen():
 
 
 if __name__ == '__main__':
-    a = np.array(
-        [
-            [1, 2, 3],
-            [4, 5, 6],
-            [7, 8, 9]
-        ]
-    )
-    print(a.sum(axis=1,keepdims=True))
+    a =np.array([429,358,434,445,527])
+    print(a.mean())
 
