@@ -34,4 +34,5 @@ result = np.linalg.inv(result)# 求逆矩阵 np.matrix(data) data.I
 result = np.dot(result, B.T)
 result = np.dot(result, Y)
 
+
 print(result)
