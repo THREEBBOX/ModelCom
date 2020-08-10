@@ -80,9 +80,9 @@ class baseAlgebra(baseAction):
     def matrixResult(self, matrix, value):
         A = Matrix(matrix)
         B = Matrix([value])
-        ret = A**-1
-        B=B.transpose()
-        ret =ret*B
+        ret = A ** -1
+        B = B.transpose()
+        ret = ret * B
         self.info("矩阵方程" + str(A) + "=" + str(value) + "的解为：" + str(ret))
 
 
@@ -95,6 +95,4 @@ if __name__ == '__main__':
         [1, 4, -7, 6]
     ]
     b = [8, 6, -2, 2]
-    obj.matrixResult(a,b)
-
-
+    obj.matrixResult(a, b)
