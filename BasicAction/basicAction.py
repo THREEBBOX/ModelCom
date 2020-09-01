@@ -2,7 +2,7 @@ import logging
 import os
 import datetime
 
-BASE_PATH = '/Volumes/Fast SSD/ModelCom/savedata'
+BASE_PATH = 'I:\ModelCom\savedata'
 
 
 class baseAction():
@@ -14,6 +14,7 @@ class baseAction():
         """
         init basic action
         :param log_path: the dir of the log
+        :param basePath: 项目的初始位置
         """
         self.basePath = basePath
         self.logPath = os.path.join(basePath, log_path)
