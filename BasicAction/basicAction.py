@@ -2,7 +2,7 @@ import logging
 import os
 import datetime
 
-BASE_PATH = 'I:\ModelCom\savedata'
+BASE_PATH = 'E:\ModelCom\savedata'
 
 
 class baseAction():

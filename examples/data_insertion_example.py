@@ -62,15 +62,15 @@ def pfunc(t, a, b, c):
 
 def fit_3D_examples():
     obj = basePro()
-    ret=obj.fit_example_3d()
+    ret = obj.fit_example_3d()
     x = np.linspace(2, 9, 701)
     y = np.linspace(2, 9, 701)
     z = np.ones(shape=(701, 701))
     for i in range(701):
         for k in range(701):
-            z[i][k] = pfunc([x[i],y[k]],*ret)
-    graph= baseGraph()
-    graph.surface_3d(x,y,z)
+            z[i][k] = pfunc([x[i], y[k]], *ret)
+    graph = baseGraph()
+    graph.surface_3d(x, y, z)
 
 
 if __name__ == '__main__':

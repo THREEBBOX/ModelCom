@@ -16,6 +16,7 @@ class baseGraph(baseAction):
         self.graphDir = os.path.join(self.basePath, 'graphDir' + strdate)
         if not os.path.exists(self.graphDir):
             os.mkdir(self.graphDir)
+            self.info("mkdir " + str(self.graphDir))
 
     def bar(self, listArray, xlables=[], ylable="please input ylable",
             title="please input title", rotation=0, width=0.2, color=None):
@@ -45,6 +46,7 @@ class baseGraph(baseAction):
         plt.title(title)
         savePath = self.title2Filename(title, 'bar')
         plt.savefig(savePath)
+        self.info("save figure in " + str(savePath))
         plt.show()
 
     def scatter(self, xlist, ylist, title="input title", xlable='input xlable',
@@ -89,11 +91,12 @@ class baseGraph(baseAction):
         savePath = os.path.join(self.graphDir, type)
         if not os.path.exists(savePath):
             os.mkdir(savePath)
+            self.info("mkdir" + str(savePath))
         savePath = os.path.join(savePath, filename)
         return savePath
 
     def plot(self, x, y, legend=None, xlable="input xlable", ylable="input ylable", title="input titile",
-             color=['r', 'g', 'yellow', 'blue']):
+             color=['r', 'g--', 'yellow', 'blue']):
         """
         折线图
         :param x:
@@ -145,7 +148,7 @@ class baseGraph(baseAction):
         plt.ylabel(ytitle)
         ax.set_zlabel(ztitle)
         savePath = self.title2Filename(title, '3d_plot')
-        plt.savefig(savePath)
+        plt.savefig(savePath, dpi=1000)
         self.info("draw line3d " + str(savePath))
         plt.show()
 
