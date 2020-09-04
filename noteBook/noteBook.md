@@ -4,3 +4,7 @@
 - 将NAN转换为0，inf转化为足够大的数字
 ## 颜色代码对照表
 - http://xh.5156edu.com/page/z1015m9220j18754.html
+## Matrix.inv()
+- 求逆
+## Matrix.nullspace
+- MatrixA * x = 0 特解

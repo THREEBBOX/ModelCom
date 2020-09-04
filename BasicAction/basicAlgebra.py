@@ -18,14 +18,23 @@ class baseAlgebra(baseAction):
         if not os.path.exists(self.algebraDir):
             os.mkdir(self.algebraDir)
 
-    def getSymbols(self, Symstr):
+    def getSymbols(self, Symstr, cls=None):
         """
         返回符号变量
         x,y,z = symbols('x y z')
         """
-        return symbols(Symstr)
+        if cls is None:
+            return symbols(Symstr)
+        else:
+            return symbols(Symstr, cls=cls)
 
     def calculateEquation(self, expr, valueDict):
+        """
+
+        :param expr:
+        :param valueDict:
+        :return:
+        """
         equation = expr.subs(valueDict)
         ret = expr.subs(valueDict).n()
         self.info("function " + str(equation))
@@ -79,11 +88,35 @@ class baseAlgebra(baseAction):
 
     def matrixResult(self, matrix, value):
         A = Matrix(matrix)
-        B = Matrix([value])
+        B = Matrix(value)
         ret = A ** -1
         B = B.transpose()
         ret = ret * B
         self.info("矩阵方程" + str(A) + "=" + str(value) + "的解为：" + str(ret))
+
+    def solve_function(self, equation, symbol):
+        """
+        方程求解，
+        :param equation: 方程，多元方程可以使用【fun1,fun2】
+        :param symbol: 求解变量，多元求解可以为【symbol1,symbol2】
+        :return: 解值：n重解，默认为1
+        """
+        try:
+            ret = roots(equation, symbol)
+        except Exception:
+            ret = solve(equation, symbol)
+        self.info("fucntion 的解为：" + str(ret))
+
+    def solve_diff_function(self, equation, symbol, ics=None):
+        """
+        解决微分方程问题
+        :param equation:等式
+        :param symbol:符号
+        :param ics: 边值
+        :return:
+        """
+        ret = dsolve(equation, symbol, ics=ics)
+        self.info("funtion result" + str(ret))
 
 
 if __name__ == '__main__':
