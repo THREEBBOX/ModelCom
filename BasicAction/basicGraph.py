@@ -50,7 +50,7 @@ class baseGraph(baseAction):
         plt.show()
 
     def scatter(self, xlist, ylist, title="input title", xlable='input xlable',
-                ylable='input ylable', color=['g', 'b', 'yellow', 'lightred']):
+                ylable='input ylable', color=['r', 'b', 'yellow', 'lightred']):
         """
         散点图
         :param xlist:
@@ -95,7 +95,7 @@ class baseGraph(baseAction):
         savePath = os.path.join(savePath, filename)
         return savePath
 
-    def plot(self, x, y, legend=None, xlable="input xlable", ylable="input ylable", title="input titile",
+    def plot(self, x, y, legend=None, xlable="inputxlable", ylable="inputylable", title="inputtitile",
              color=['r', 'g--', 'yellow', 'blue']):
         """
         折线图
