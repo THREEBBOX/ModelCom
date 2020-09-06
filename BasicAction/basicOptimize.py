@@ -49,8 +49,9 @@ class baseOptimize(baseAction):
         f.write("minize  " + str(c) + "\n")
         for i in range(len(A)):
             f.write(str(A[i]) + " <= " + str(b[i]) + "\n")
-        for i in range(len(Aeq)):
-            f.write(str(Aeq[i]) + " = " + str(beq[i]) + "\n")
+        if Aeq is not None:
+            for i in range(len(Aeq)):
+                f.write(str(Aeq[i]) + " = " + str(beq[i]) + "\n")
         f.write(str(limitTuple) + "\n")
         f.write("最小值为:" + str(ret.fun) + "\n")
         f.write("最佳解为:" + str(ret.x) + "\n")
@@ -90,27 +91,28 @@ class baseOptimize(baseAction):
         eq = [1, 1.01, 1.02, 1.045, 1.065]
         eq = np.array(eq).reshape(5, 1)
         d = [0.025, 0.015, 0.055, 0.026]
-        d =np.array(d).reshape(4,1)
-        value = np.linspace(0,0.2,500)
-        ret=[]
+        d = np.array(d).reshape(4, 1)
+        value = np.linspace(0, 0.2, 500)
+        ret = []
         for a in value:
-            alist =[a]*4
-            alist =np.array(alist).reshape(-1,1)
+            alist = [a] * 4
+            alist = np.array(alist).reshape(-1, 1)
             conds = [
-                cp.sum(cp.multiply(eq,x))==1,
-                cp.sum(cp.multiply(d,x[1:]),axis=1,keepdims=True)<=alist,
-                x>=0
+                cp.sum(cp.multiply(eq, x)) == 1,
+                cp.sum(cp.multiply(d, x[1:]), axis=1, keepdims=True) <= alist,
+                x >= 0
             ]
-            pro = cp.Problem(obj,conds)
+            pro = cp.Problem(obj, conds)
             pro.solve()
             ret.append(pro.value)
         return ret
+
 
 if __name__ == '__main__':
     obj = baseOptimize()
     ret = obj.example_double_opt()
     value = np.linspace(0, 0.2, 500)
     graph = baseGraph()
-    graph.scatter([value],[ret])
+    graph.scatter([value], [ret])
     # lst=[0,1,2,3,4]
     # print(lst[1:4])

@@ -8,3 +8,6 @@
 - 求逆
 ## Matrix.nullspace
 - MatrixA * x = 0 特解
+## 非线性规划问题
+- 不要使用GLPK_MI库，可能存在无法求解问题
+- 使用GLPK库

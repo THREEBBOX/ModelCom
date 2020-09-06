@@ -3,6 +3,7 @@ from BasicAction.basicFile import baseFile
 from BasicAction.basicGraph import baseGraph
 from BasicAction.basicAlgebra import baseAlgebra
 from BasicAction.basicStatic import basePro
+from BasicAction.basicOptimize import baseOptimize
 import numpy as np
 import scipy as sp
 import pandas as pd
