@@ -96,7 +96,7 @@ class baseGraph(baseAction):
         return savePath
 
     def plot(self, x, y, legend=None, xlable="inputxlable", ylable="inputylable", title="inputtitile",
-             color=['r', 'g--', 'yellow', 'blue']):
+             color=['r', 'g', 'yellow', 'blue']):
         """
         折线图
         :param x:
